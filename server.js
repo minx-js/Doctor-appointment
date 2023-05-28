@@ -3,6 +3,7 @@ const colors = require("colors");
 const moragan = require("morgan");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const path = require ('path');
 
 //dotenv conig
 dotenv.config();
@@ -25,7 +26,7 @@ app.use("/api/v1/doctor", require("./routes/doctorRoutes"));
 // static file buildfrom client for deployment
 app.use(express.static(path.join(__dirname, './client/build')));
 
-app.get ('*', function (req, res) {
+app.get ('*', function (req,res) {
   res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
 
